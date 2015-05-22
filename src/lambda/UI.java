@@ -674,6 +674,10 @@ public class UI extends javax.swing.JFrame {
             this.jButton5.setVisible(true);
         }
     }
+    private void errorDialog(String cad){
+        JOptionPane.showMessageDialog(new JFrame(),cad,"Error",JOptionPane.ERROR_MESSAGE);
+        this.jButton5.setVisible(true);
+    }
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         this.jButton3.setVisible(false);
         this.jPanel1.setVisible(false);
@@ -683,18 +687,33 @@ public class UI extends javax.swing.JFrame {
                 instrucciones.get(i).setSelec(false);
                 switch(instrucciones.get(i).getAccion()){
                     case "g":
-                        if(Objects.equals(X.get(instrucciones.get(i).getVariable()), 0)){
-                            if(instrucciones.get(i).getRenglon()<instrucciones.size())
-                                instrucciones.get(instrucciones.get(i).getRenglon()-1).setSelec(true);
-                            else{
-                                JOptionPane.showMessageDialog(new JFrame(),
-                                        "Destino no encontrado.",
-                                        "Error",
-                                        JOptionPane.ERROR_MESSAGE);
-                                this.jButton5.setVisible(true);
-                            }
-                        }else
-                            termina(i);
+                        switch(instrucciones.get(i).getVariable().substring(0, 1)){
+                            case "x":
+                                if (Objects.equals(X.get(instrucciones.get(i).getVariable()), 0)) {
+                                    if (instrucciones.get(i).getRenglon() < instrucciones.size()) {
+                                        instrucciones.get(instrucciones.get(i).getRenglon() - 1).setSelec(true);
+                                    } else 
+                                        errorDialog("Destino no encontrado");
+                                }
+                                break;
+                            case "y":
+                                if (Objects.equals(Y.get(instrucciones.get(i).getVariable()), 0)) {
+                                    if (instrucciones.get(i).getRenglon() < instrucciones.size()) {
+                                        instrucciones.get(instrucciones.get(i).getRenglon() - 1).setSelec(true);
+                                    } else 
+                                        errorDialog("Destino no encontrado");
+                                }
+                                break;
+                            case "z":
+                                if (Objects.equals(Z.get(instrucciones.get(i).getVariable()), 0)) {
+                                    if (instrucciones.get(i).getRenglon() < instrucciones.size()) {
+                                        instrucciones.get(instrucciones.get(i).getRenglon() - 1).setSelec(true);
+                                    } else
+                                        errorDialog("Destino no encontrado");
+                                }
+                                break;
+                        }
+                        termina(i);
                         break;
                     case "i":
                         switch(instrucciones.get(i).getVariable().substring(0, 1)){
@@ -737,7 +756,7 @@ public class UI extends javax.swing.JFrame {
                         termina(i);
                         break;
                     default:
-                        Z.put("z0", Z.get("z0")+1);
+                        errorDialog("Instrucción invalida");
                 }
                 actualizaX();actualizaY();actualizaZ();
                 this.jList1.updateUI();
