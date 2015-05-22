@@ -697,15 +697,43 @@ public class UI extends javax.swing.JFrame {
                             termina(i);
                         break;
                     case "i":
-                        valor = X.get(instrucciones.get(i).getVariable());
-                        valor++;
-                        X.put(instrucciones.get(i).getVariable(), valor);
+                        switch(instrucciones.get(i).getVariable().substring(0, 1)){
+                            case "x":
+                                valor = X.get(instrucciones.get(i).getVariable());
+                                valor++;
+                                X.put(instrucciones.get(i).getVariable(), valor);
+                                break;
+                            case "y":
+                                valor = Y.get(instrucciones.get(i).getVariable());
+                                valor++;
+                                Y.put(instrucciones.get(i).getVariable(), valor);
+                                break;
+                            case "z":
+                                valor = Z.get(instrucciones.get(i).getVariable());
+                                valor++;
+                                Z.put(instrucciones.get(i).getVariable(), valor);
+                                break;
+                        }
                         termina(i);
                         break;
                     case "d":
-                        valor = X.get(instrucciones.get(i).getVariable());
-                        valor--;
-                        X.put(instrucciones.get(i).getVariable(), valor);
+                        switch(instrucciones.get(i).getVariable().substring(0, 1)){
+                            case "x":
+                                valor = X.get(instrucciones.get(i).getVariable());
+                                valor--;
+                                X.put(instrucciones.get(i).getVariable(), valor);
+                                break;
+                            case "y":
+                                valor = Y.get(instrucciones.get(i).getVariable());
+                                valor--;
+                                Y.put(instrucciones.get(i).getVariable(), valor);
+                                break;
+                            case "z":
+                                valor = Z.get(instrucciones.get(i).getVariable());
+                                valor--;
+                                Z.put(instrucciones.get(i).getVariable(), valor);
+                                break;
+                        }
                         termina(i);
                         break;
                     default:
