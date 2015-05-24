@@ -38,9 +38,9 @@ public class UI extends javax.swing.JFrame {
         this.instrucciones = new DefaultListModel<>();
         initComponents();
         this.jPanel1.setVisible(false);
-        this.jButton3.setVisible(false);
-        this.jButton2.setVisible(false);
-        this.jButton5.setVisible(false);
+        this.b_initX.setVisible(false);
+        this.b_siguiente.setVisible(false);
+        this.b_salir.setVisible(false);
         X = new HashMap<>();
         Y = new HashMap<>();
         Z = new HashMap<>();
@@ -61,11 +61,11 @@ public class UI extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
+        b_cargarArchivo = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        b_siguiente = new javax.swing.JButton();
+        b_initX = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -88,7 +88,7 @@ public class UI extends javax.swing.JFrame {
         jTextField9 = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         jTextField10 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
+        b_aceptarX = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -133,30 +133,30 @@ public class UI extends javax.swing.JFrame {
         la_z7 = new javax.swing.JLabel();
         la_z8 = new javax.swing.JLabel();
         la_z9 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
+        b_salir = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Cargar Archivo");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        b_cargarArchivo.setText("Cargar Archivo");
+        b_cargarArchivo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                cargarARchivo(evt);
             }
         });
 
         jScrollPane1.setViewportView(jList1);
 
-        jButton2.setText("Siguente");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        b_siguiente.setText("Siguente");
+        b_siguiente.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                seguir(evt);
             }
         });
 
-        jButton3.setText("Iniciarlizar Variables");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        b_initX.setText("Iniciarlizar Variables");
+        b_initX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                iniciarX(evt);
             }
         });
 
@@ -207,10 +207,10 @@ public class UI extends javax.swing.JFrame {
 
         jTextField10.setText("0");
 
-        jButton4.setText("Aceptar");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        b_aceptarX.setText("Aceptar");
+        b_aceptarX.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                guardarX(evt);
             }
         });
 
@@ -260,7 +260,7 @@ public class UI extends javax.swing.JFrame {
                                     .addComponent(jTextField10)))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addComponent(jButton4)))
+                        .addComponent(b_aceptarX)))
                 .addContainerGap(22, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -299,7 +299,7 @@ public class UI extends javax.swing.JFrame {
                     .addComponent(jLabel11)
                     .addComponent(jTextField10, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jButton4)
+                .addComponent(b_aceptarX)
                 .addGap(24, 24, 24))
         );
 
@@ -528,10 +528,10 @@ public class UI extends javax.swing.JFrame {
 
         la_x0.getAccessibleContext().setAccessibleDescription("");
 
-        jButton5.setText("Salir");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        b_salir.setText("Salir");
+        b_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                salir(evt);
             }
         });
 
@@ -546,14 +546,14 @@ public class UI extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButton1)
+                                .addComponent(b_cargarArchivo)
                                 .addGap(35, 35, 35)
-                                .addComponent(jButton3))
+                                .addComponent(b_initX))
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                 .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                    .addComponent(jButton2)
+                                    .addComponent(b_siguiente)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton5))
+                                    .addComponent(b_salir))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 302, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -567,14 +567,14 @@ public class UI extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1)
-                            .addComponent(jButton3))
+                            .addComponent(b_cargarArchivo)
+                            .addComponent(b_initX))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton2)
-                            .addComponent(jButton5))
+                            .addComponent(b_siguiente)
+                            .addComponent(b_salir))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
@@ -586,7 +586,7 @@ public class UI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void cargarARchivo(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cargarARchivo
         JFileChooser chooser = new JFileChooser();
         chooser.setCurrentDirectory(new java.io.File("F:/Escritorio"));
         chooser.setDialogTitle("Titulo");
@@ -617,18 +617,18 @@ public class UI extends javax.swing.JFrame {
         }
         instrucciones.get(0).setSelec(true);
         this.jList1.setModel(instrucciones);
-        this.jButton3.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+        this.b_initX.setVisible(true);
+    }//GEN-LAST:event_cargarARchivo
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void iniciarX(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarX
         this.jPanel1.setVisible(true);
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_iniciarX
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void guardarX(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_guardarX
         X.put("x0", Integer.parseInt(this.jTextField1.getText()));
         X.put("x1", Integer.parseInt(this.jTextField2.getText()));
         X.put("x2", Integer.parseInt(this.jTextField3.getText()));
@@ -640,11 +640,11 @@ public class UI extends javax.swing.JFrame {
         X.put("x8", Integer.parseInt(this.jTextField9.getText()));
         X.put("x9", Integer.parseInt(this.jTextField10.getText()));
         this.jPanel1.setVisible(false);
-        this.jButton2.setVisible(true);
+        this.b_siguiente.setVisible(true);
         actualizaX();
         actualizaY();
         actualizaZ();
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_guardarX
     private void actualizaX(){
         this.la_x0.setText(X.get("x0").toString());this.la_x1.setText(X.get("x1").toString());
         this.la_x2.setText(X.get("x2").toString());this.la_x3.setText(X.get("x3").toString());
@@ -670,16 +670,16 @@ public class UI extends javax.swing.JFrame {
         if ((i + 1) < instrucciones.size()) {
             instrucciones.get(i + 1).setSelec(true);
         } else {
-            this.jButton2.setVisible(false);
-            this.jButton5.setVisible(true);
+            this.b_siguiente.setVisible(false);
+            this.b_salir.setVisible(true);
         }
     }
     private void errorDialog(String cad){
         JOptionPane.showMessageDialog(new JFrame(),cad,"Error",JOptionPane.ERROR_MESSAGE);
-        this.jButton5.setVisible(true);
+        this.b_salir.setVisible(true);
     }
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        this.jButton3.setVisible(false);
+    private void seguir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seguir
+        this.b_initX.setVisible(false);
         this.jPanel1.setVisible(false);
         Integer valor = 0;
         for(int i=0; i<instrucciones.size();i++){
@@ -763,11 +763,11 @@ public class UI extends javax.swing.JFrame {
                 break;
             }
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_seguir
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void salir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salir
         System.exit(0);
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_salir
 
     /**
      * @param args the command line arguments
@@ -805,11 +805,11 @@ public class UI extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
+    private javax.swing.JButton b_aceptarX;
+    private javax.swing.JButton b_cargarArchivo;
+    private javax.swing.JButton b_initX;
+    private javax.swing.JButton b_salir;
+    private javax.swing.JButton b_siguiente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
