@@ -20,7 +20,7 @@ import javax.swing.JOptionPane;
  *
  * @author HectorJavier
  */
-public class UI extends javax.swing.JFrame {
+public class Interfaz extends javax.swing.JFrame {
     
     DefaultListModel<Instruccion> instrucciones;
     //Para el archivo
@@ -34,7 +34,7 @@ public class UI extends javax.swing.JFrame {
     /**
      * Creates new form UI
      */
-    public UI() {
+    public Interfaz() {
         this.instrucciones = new DefaultListModel<>();
         initComponents();
         this.jPanel1.setVisible(false);
@@ -674,6 +674,13 @@ public class UI extends javax.swing.JFrame {
             this.b_salir.setVisible(true);
         }
     }
+    private void actualizarSiguiente(int i){
+        if (instrucciones.get(i).getRenglon() < instrucciones.size()) {
+            instrucciones.get(instrucciones.get(i).getRenglon() - 1).setSelec(true);
+        } else {
+            errorDialog("Destino no encontrado");
+        }
+    }
     private void errorDialog(String cad){
         JOptionPane.showMessageDialog(new JFrame(),cad,"Error",JOptionPane.ERROR_MESSAGE);
         this.b_salir.setVisible(true);
@@ -681,7 +688,6 @@ public class UI extends javax.swing.JFrame {
     private void seguir(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_seguir
         this.b_initX.setVisible(false);
         this.jPanel1.setVisible(false);
-        Integer valor = 0;
         for(int i=0; i<instrucciones.size();i++){
             if(instrucciones.get(i).isSelec()){
                 instrucciones.get(i).setSelec(false);
@@ -689,48 +695,29 @@ public class UI extends javax.swing.JFrame {
                     case "g":
                         switch(instrucciones.get(i).getVariable().substring(0, 1)){
                             case "x":
-                                if (Objects.equals(X.get(instrucciones.get(i).getVariable()), 0)) {
-                                    if (instrucciones.get(i).getRenglon() < instrucciones.size()) {
-                                        instrucciones.get(instrucciones.get(i).getRenglon() - 1).setSelec(true);
-                                    } else 
-                                        errorDialog("Destino no encontrado");
-                                }
+                                if (Objects.equals(X.get(instrucciones.get(i).getVariable()), 0))
+                                    actualizarSiguiente(i);
                                 break;
                             case "y":
-                                if (Objects.equals(Y.get(instrucciones.get(i).getVariable()), 0)) {
-                                    if (instrucciones.get(i).getRenglon() < instrucciones.size()) {
-                                        instrucciones.get(instrucciones.get(i).getRenglon() - 1).setSelec(true);
-                                    } else 
-                                        errorDialog("Destino no encontrado");
-                                }
+                                if (Objects.equals(Y.get(instrucciones.get(i).getVariable()), 0))
+                                    actualizarSiguiente(i);
                                 break;
                             case "z":
-                                if (Objects.equals(Z.get(instrucciones.get(i).getVariable()), 0)) {
-                                    if (instrucciones.get(i).getRenglon() < instrucciones.size()) {
-                                        instrucciones.get(instrucciones.get(i).getRenglon() - 1).setSelec(true);
-                                    } else
-                                        errorDialog("Destino no encontrado");
-                                }
+                                if (Objects.equals(Z.get(instrucciones.get(i).getVariable()), 0))
+                                    actualizarSiguiente(i);
                                 break;
                         }
-                        termina(i);
                         break;
                     case "i":
                         switch(instrucciones.get(i).getVariable().substring(0, 1)){
                             case "x":
-                                valor = X.get(instrucciones.get(i).getVariable());
-                                valor++;
-                                X.put(instrucciones.get(i).getVariable(), valor);
+                                X.put(instrucciones.get(i).getVariable(), X.get(instrucciones.get(i).getVariable())+1);
                                 break;
                             case "y":
-                                valor = Y.get(instrucciones.get(i).getVariable());
-                                valor++;
-                                Y.put(instrucciones.get(i).getVariable(), valor);
+                                Y.put(instrucciones.get(i).getVariable(), Y.get(instrucciones.get(i).getVariable())+1);
                                 break;
                             case "z":
-                                valor = Z.get(instrucciones.get(i).getVariable());
-                                valor++;
-                                Z.put(instrucciones.get(i).getVariable(), valor);
+                                Z.put(instrucciones.get(i).getVariable(), Z.get(instrucciones.get(i).getVariable())+1);
                                 break;
                         }
                         termina(i);
@@ -738,19 +725,13 @@ public class UI extends javax.swing.JFrame {
                     case "d":
                         switch(instrucciones.get(i).getVariable().substring(0, 1)){
                             case "x":
-                                valor = X.get(instrucciones.get(i).getVariable());
-                                valor--;
-                                X.put(instrucciones.get(i).getVariable(), valor);
+                                X.put(instrucciones.get(i).getVariable(), X.get(instrucciones.get(i).getVariable())-1);
                                 break;
                             case "y":
-                                valor = Y.get(instrucciones.get(i).getVariable());
-                                valor--;
-                                Y.put(instrucciones.get(i).getVariable(), valor);
+                                Y.put(instrucciones.get(i).getVariable(), Y.get(instrucciones.get(i).getVariable())-1);
                                 break;
                             case "z":
-                                valor = Z.get(instrucciones.get(i).getVariable());
-                                valor--;
-                                Z.put(instrucciones.get(i).getVariable(), valor);
+                                Z.put(instrucciones.get(i).getVariable(), Z.get(instrucciones.get(i).getVariable())-1);
                                 break;
                         }
                         termina(i);
@@ -786,20 +767,21 @@ public class UI extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UI.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Interfaz.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UI().setVisible(true);
+                new Interfaz().setVisible(true);
             }
         });
     }
